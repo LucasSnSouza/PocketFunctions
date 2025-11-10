@@ -1,13 +1,40 @@
 <template>
 
-    <div class="wrapper-homeview h-full font-sm">
+    <div class="wrapper-homeview h-full font-sm flex flex-column gap-md">
 
-        <ButtonBasic
-            class="rounded-md p-lg w-full bg-color-brand-three"
-        >
-            <p class="color-brand-two">Adicionar novo Som</p>
-        </ButtonBasic>
+        <h1 class="font-md">Sons Ambientes</h1>
+        <p class="w-3-4">
+            Faça do seu dispositivo um gerador de sons ambientes confortaveis para todas as horas.
+        </p>
 
+        <div>
+            <ButtonBasic
+                class="rounded-md p-lg bg-color-brand-three"
+            >
+                <MiscIcon
+                    class="bg-color-brand-one"
+                    icon="music-fill"
+                    :size="[20,20]"
+                />
+            </ButtonBasic>
+        </div>
+
+        <MiscDivision/>
+
+        <div class="flex flex-column gap-md">
+
+            <SoundBasic>
+            </SoundBasic>
+
+        </div>
+
+        <div class="flex x-center">
+            <MiscIcon
+                class="bg-color-brand-three"
+                icon="dots-fill"
+                :size="[24,24]"
+            />
+        </div>
 
     </div>
 
@@ -17,6 +44,7 @@
 
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
+import * as Sound from "@/components/Sound"
 
 export default {
     data(){
@@ -25,7 +53,8 @@ export default {
     },
     components: {
         ...Misc,
-        ...Button
+        ...Button,
+        ...Sound
     },
     methods: {
     },
