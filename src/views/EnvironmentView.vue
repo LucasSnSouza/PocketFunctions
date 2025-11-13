@@ -42,6 +42,8 @@
 
 <script>
 
+import { useEnvironmentStore } from '@/stores/environment.js'
+
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
 import * as Sound from "@/components/Sound"
@@ -54,7 +56,7 @@ export default {
     components: {
         ...Misc,
         ...Button,
-        ...Sound
+        ...Sound,
     },
     methods: {
     },

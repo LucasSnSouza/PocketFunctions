@@ -43,6 +43,9 @@
                 >{{ item?.title }}</p>
             </ButtonBasic>
         </div>
+
+        <SidePanelEnvironment/>
+
     </div>
 
 </template>
@@ -53,6 +56,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useSystemStore } from '@/stores/system.js'
 
 import * as Misc from "@/components/Misc"
+import * as SidePanel from "@/components/SidePanel"
 import * as Button from "@/components/Button"
 
 export default {
@@ -78,7 +82,8 @@ export default {
     },
     components: {
         ...Misc,
-        ...Button
+        ...Button,
+        ...SidePanel
     },
     methods: {
         set_navigation_selected(selectedIndex){
