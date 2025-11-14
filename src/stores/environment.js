@@ -26,7 +26,7 @@ export const useEnvironmentStore = defineStore('environment', {
             )
         },
         setVolume(index, volume){
-            this.environment_sounds[index].howl.volume = volume / 100
+            this.environment_sounds[index].howl.volume(volume / 100)
         },
         toggleEnvironmentInterface(){
             this.environment_show = !this.environment_show

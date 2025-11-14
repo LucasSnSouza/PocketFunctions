@@ -26,7 +26,8 @@
 
             <SoundBasic
                 v-for="(item, index) in getEnvironmentSounds"
-                @change="(event) => { setVolume(0, event.target.value) }"
+                :title="item.title"
+                @change="(event) => { setVolume(index, event.target.value) }"
                 :index="index"
             >
             </SoundBasic>

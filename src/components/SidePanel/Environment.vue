@@ -59,6 +59,21 @@ export default{
                     title: "Chuva Fraca",
                     icon: "drop",
                     sound: "calm-rain"
+                },
+                {
+                    title: "Chuva Forte",
+                    icon: "drop",
+                    sound: "heavy-rain"
+                },
+                {
+                    title: "Trovões Distantes",
+                    icon: "drop",
+                    sound: "distant-thunder"
+                },
+                {
+                    title: "Trovões Proximos",
+                    icon: "drop",
+                    sound: "heavy-thunder"
                 }
             ]
         }

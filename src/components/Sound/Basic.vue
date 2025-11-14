@@ -13,7 +13,7 @@
         </ButtonBasic>
 
         <div class="sound-basic-information color-brand-two flex flex-column gap-md w-full">
-            <h1 class="font-md">Chuva leve</h1>
+            <h1 class="font-md">{{ title }}</h1>
             <input class="sound-basic-slide" type="range" min="1" max="100"/>
         </div>
 
@@ -29,6 +29,11 @@ import * as Button from "@/components/Button"
 export default {
     data(){
         return{
+        }
+    },
+    props:{
+        title: {
+            type: String
         }
     },
     components: {
