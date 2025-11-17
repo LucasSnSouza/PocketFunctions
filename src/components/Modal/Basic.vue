@@ -1,29 +1,29 @@
 <template>
 
-    <div class="modal-basic-wrapper absolute w-full p-lg bg-color-brand-three flex flex-column justify-between">
-        <div 
-            v-if="title"
-            class="modal-basic-title flex flex-column color-brand-one"
-        >
-            <h1 class="font-md">{{ title }}</h1>
-        </div>
-        <div class="modal-basic-contents h-full">
-            <slot/>
-        </div>
-        <div class="modal-basic-buttons flex gap-md">
-
-            <ButtonBasic
-                class="w-full p-lg rounded-md bg-color-brand-one"
-            >
-                <p>Cancel</p>
-            </ButtonBasic>
-
-            <ButtonBasic
-                class="w-full p-lg rounded-md bg-color-brand-one"
-            >
-                <p>Submit</p>
-            </ButtonBasic>
-            
+    <div class="modal-basic-wrapper absolute w-full h-full y-center p-lg flex">
+        <div class="modal-basic-panel rounded-md">
+            <div class="modal-basic-informations p-lg">
+                <slot/>
+            </div>
+            <div class="modal-basic-actions p-lg flex gap-md">
+    
+                <ButtonBasic
+                    v-if="cancelButton"
+                    class="w-full p-lg rounded-md bg-none color-brand-three"
+                    @click="$emit('cancel-action')"
+                >
+                    <p>{{ cancelButton }}</p>
+                </ButtonBasic>
+    
+                <ButtonBasic
+                    v-if="confirmButton"
+                    class="w-full p-lg rounded-md bg-color-brand-three color-brand-one"
+                    @click="$emit('confirm-action')"
+                >
+                    <p>{{ confirmButton }}</p>
+                </ButtonBasic>
+                
+            </div>
         </div>
     </div>
 
@@ -43,7 +43,11 @@ export default{
         ...Button
     },
     props: {
-        title: {
+        cancelButton: {
+            type: String,
+            default: null
+        },
+        confirmButton: {
             type: String,
             default: null
         }
@@ -55,19 +59,13 @@ export default{
 <style lang="scss">
 
 .modal-basic-wrapper{
-    height: 0px;
-    bottom: 0px;
-    left: 0px;
+    background-color: rgba(0, 0, 0, 0.30);
     z-index: 5;
-    animation: fade-in 0.1s linear forwards;
-}
 
-@keyframes fade-in {
-    from{
-        height: 0px;
-    }to{
-        height: calc(50%);
+    .modal-basic-panel{
+        background-color: white;
     }
 }
+
 
 </style>

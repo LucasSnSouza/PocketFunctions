@@ -7,7 +7,7 @@
             Faça do seu dispositivo um gerador de sons ambientes confortaveis para todas as horas.
         </p>
 
-        <div>
+        <div class="flex gap-md">
             <ButtonBasic
                 class="rounded-md p-lg bg-color-brand-three"
                 @click="toggleEnvironmentInterface()"
@@ -15,6 +15,16 @@
                 <MiscIcon
                     class="bg-color-brand-one"
                     icon="music-fill"
+                    :size="[20,20]"
+                />
+            </ButtonBasic>
+            <ButtonBasic
+                class="rounded-md p-lg bg-color-brand-three"
+                @click="toggleFavoriteEnvironmentInterface()"
+            >
+                <MiscIcon
+                    class="bg-color-brand-one"
+                    icon="favorite"
                     :size="[20,20]"
                 />
             </ButtonBasic>
@@ -68,6 +78,9 @@ export default {
     methods: {
         toggleEnvironmentInterface(){
             useEnvironmentStore().toggleEnvironmentInterface()
+        },
+        toggleFavoriteEnvironmentInterface(){
+            useEnvironmentStore().toggleFavoriteEnvironmentInterface()
         },
         setVolume(index, volume){
             useEnvironmentStore().setVolume(index, volume)

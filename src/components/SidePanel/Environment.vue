@@ -62,12 +62,12 @@ export default{
                 },
                 {
                     title: "Trovões Distantes",
-                    icon: "drop",
+                    icon: "thunder",
                     sound: "distant-thunder"
                 },
                 {
                     title: "Fogueira",
-                    icon: "drop",
+                    icon: "fire",
                     sound: "campfire"
                 },
                 {
@@ -76,9 +76,9 @@ export default{
                     sound: "waterfall"
                 },
                 {
-                    title: "Guerra",
-                    icon: "drop",
-                    sound: "war"
+                    title: "Piano",
+                    icon: "piano",
+                    sound: "piano"
                 },
             ]
         }

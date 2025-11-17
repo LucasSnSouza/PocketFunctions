@@ -5,10 +5,12 @@ export const useEnvironmentStore = defineStore('environment', {
     state: () => ({
         environment_show: false,
         environment_sounds: [],
+        favorite_environment_show: false,
     }),
     getters: {
         getEnvironmentSounds: (state) => state.environment_sounds,
-        getEnvironmentShow: (state) => state.environment_show
+        getEnvironmentShow: (state) => state.environment_show,
+        getFavoriteEnvironmentShow: (state) => state.favorite_environment_show
     },
     actions: {
         addEnvironment(sound_data){
@@ -37,6 +39,9 @@ export const useEnvironmentStore = defineStore('environment', {
         },
         toggleEnvironmentInterface(){
             this.environment_show = !this.environment_show
+        },
+        toggleFavoriteEnvironmentInterface(){
+            this.favorite_environment_show = !this.favorite_environment_show
         }
     }
 })

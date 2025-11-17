@@ -48,6 +48,28 @@
             v-if="getEnvironmentShow"
         />
 
+        <ModalBasic
+            v-if="getFavoriteEnvironmentShow"
+            cancel-button="Cancelar"
+            confirm-button="Criar"
+            @cancel-action="toggleFavoriteEnvironmentInterface"
+        >
+            <div class="flex flex-column gap-lg">
+                <div class="flex flex-column gap-sm">
+                    <h1 class="font-lg">Favoritar</h1>
+                    <p class="font-md o-half">Favorite essa lista para que você possa facilmente recarregar a momento.</p>
+                </div>
+                <InputBasic
+                    class="rounded-md p-lg"
+                    style="
+                        border: 1px solid var(--color-brand-three);
+                        box-shadow: 2px 2px 8px #00000011;
+                    "
+                    placeholder="Que nome deseja dar a sua lista?"
+                ></InputBasic>
+            </div>
+        </ModalBasic>
+
     </div>
 
 </template>
@@ -62,6 +84,8 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 import * as Misc from "@/components/Misc"
 import * as SidePanel from "@/components/SidePanel"
 import * as Button from "@/components/Button"
+import * as Modal from "@/components/Modal"
+import * as Input from "@/components/Input"
 
 export default {
     data(){
@@ -87,7 +111,9 @@ export default {
     components: {
         ...Misc,
         ...Button,
-        ...SidePanel
+        ...SidePanel,
+        ...Modal,
+        ...Input
     },
     methods: {
         set_navigation_selected(selectedIndex){
@@ -95,11 +121,17 @@ export default {
             ...button,
             selected: index === selectedIndex
             }))
-        }
+        },
+        toggleFavoriteEnvironmentInterface(){
+            useEnvironmentStore().toggleFavoriteEnvironmentInterface()
+        },
     },
     computed: {
         getEnvironmentShow(){
             return useEnvironmentStore().getEnvironmentShow
+        },
+        getFavoriteEnvironmentShow(){
+            return useEnvironmentStore().getFavoriteEnvironmentShow
         }
     },
     created(){
