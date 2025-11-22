@@ -39,6 +39,18 @@
                     <p class="font-md">{{ item?.description }}</p>
                 </div>
             </ButtonBasic>
+
+            <MiscDivision/>
+
+            <ButtonBasic
+                v-for="(item, index) in favorite_sounds_list"
+                class="sidepanel-environment-button w-full rounded-md bg-none flex gap-sm p-lg y-center bg-color-brand-three"
+                :index="index"
+            >
+                <div class="sidepanel-environment-title w-full h-full color-brand-one">
+                    <p class="font-md">{{ item?.name }}</p>
+                </div>
+            </ButtonBasic>
             
         </div>
     </div>
@@ -47,6 +59,8 @@
 <script>
 
 import { useEnvironmentStore } from '@/stores/environment.js'
+
+import { Storage } from "@/utils/storage.js"
 
 import * as Button from '@/components/Button'
 import * as Misc from '@/components/Misc'
@@ -80,7 +94,8 @@ export default{
                     icon: "piano",
                     sound: "piano"
                 },
-            ]
+            ],
+            favorite_sounds_list: []
         }
     },
     components:{
@@ -96,6 +111,9 @@ export default{
         toggleEnvironmentInterface(){
             useEnvironmentStore().toggleEnvironmentInterface()
         }
+    },
+    created(){
+        this.favorite_sounds_list = Storage.get("app-favorites").data.items
     }
 }
 

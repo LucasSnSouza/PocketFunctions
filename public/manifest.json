@@ -1,0 +1,13 @@
+{
+  "name": "Chuvinha",
+  "short_name": "chuvinha",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 128x128 256x256",
+      "type": "image/x-icon"
+    }
+  ]
+}
