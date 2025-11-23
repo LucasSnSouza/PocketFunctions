@@ -137,14 +137,13 @@ export default {
                 return rest;
             });
             Storage
-            .create("app-favorites")
-            .merge({
-                items: {
+            .get("app-favorites")
+            .push("items", {
                     name: this.favorite_text,
                     items: EnvironmentSoundsSanitized
-                }
-            })
+                })
             .save()
+            this.toggleFavoriteEnvironmentInterface()
         }
     },
     computed: {
@@ -156,6 +155,9 @@ export default {
         }
     },
     created(){
+        if(!Storage.exists("app-favorites")){
+            Storage.create("app-favorites").set("items", []).save()
+        }
     }
 }
 

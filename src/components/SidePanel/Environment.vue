@@ -21,24 +21,28 @@
                 </div>
             </div>
 
-            <ButtonBasic
-                v-for="(item, index) in environment_sounds"
-                class="sidepanel-environment-button w-full rounded-md bg-none flex gap-sm p-lg y-center bg-color-brand-three"
-                :index="index"
-                @click="addEnvironmentSound(item)"
+            <div 
+                class="grid gap-md"
+                style="
+                    grid-auto-flow: column;
+                    grid-auto-rows: auto;
+                    grid-template-rows: repeat(3, 1fr);
+                "
             >
-                <div class="sidepanel-environment-icon aspect-ratio">
-                    <MiscIcon
-                        :icon="item.icon"
-                        class="bg-color-brand-one"
-                        :size="[19,19]"
-                    />
-                </div>
-                <div class="sidepanel-environment-title w-full h-full color-brand-one">
-                    <p class="font-md">{{ item?.title }}</p>
-                    <p class="font-md">{{ item?.description }}</p>
-                </div>
-            </ButtonBasic>
+                <ButtonBasic
+                    v-for="(item, index) in environment_sounds"
+                    class="sidepanel-environment-button w-full aspect-ratio rounded-md bg-none flex gap-sm relative y-center bg-color-brand-three"
+                    :index="index"
+                    @click="addEnvironmentSound(item)"
+                >
+                    <div 
+                        class="sidepanel-environment-title p-sm absolute color-brand-two bg-color-brand-one rounded-sm"
+                        style="bottom: var(--scale-brand-md); left: var(--scale-brand-md);"
+                    >
+                        <p class="font-sm text-start">{{ item?.title }}</p>
+                    </div>
+                </ButtonBasic>
+            </div>
 
             <MiscDivision/>
 
