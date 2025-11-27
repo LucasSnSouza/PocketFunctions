@@ -8,6 +8,16 @@
   src: url(fonts/calibri.ttf);
 }
 
+@font-face {
+  font-family: fe;
+  src: url(fonts/fe.ttf);
+}
+
+@font-face {
+  font-family: unispace;
+  src: url(fonts/unispace.ttf);
+}
+
 *{
   margin: 0px;
   padding: 0px;
@@ -25,4 +35,16 @@ body, html{
 
 *::-webkit-scrollbar {
   display: none;
+}
+
+.calibri{
+  font-family: calibri;
+}
+
+.fe{
+  font-family: fe;
+}
+
+.unispace{
+  font-family: unispace;
 }

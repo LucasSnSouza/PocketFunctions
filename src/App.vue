@@ -45,16 +45,6 @@
                     class="text-center color-brand-two"
                 >{{ item?.title }}</p>
             </ButtonBasic>
-            <ButtonBasic
-                class="flex bg-none x-center y-center flex-column p-lg rounded-md bg-color-brand-three"
-                @click="toggleTheme()"
-            >
-                <MiscIcon
-                    icon="lamp-fill"
-                    class="bg-color-brand-one"
-                    :size="[24,24]"
-                />
-            </ButtonBasic>
         </div>
 
         <SidePanelEnvironment
