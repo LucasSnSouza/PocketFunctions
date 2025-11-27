@@ -63,27 +63,32 @@ export default{
         return{
             environment_sounds: [
                 {
-                    title: "Chuva Fraca",
+                    title: "Chuva leve",
+                    description: "Um leve som de chuva para relaxar",
                     photo: "calm-rain.png",
                     sound: "calm-rain"
                 },
                 {
-                    title: "Trovões Distantes",
+                    title: "Trovões",
+                    description: "Sons de pequenos trovões distantes",
                     photo: "thunder-storm.png",
                     sound: "distant-thunder"
                 },
                 {
                     title: "Fogueira",
+                    description: "Um adoravel som de fogueira queimando",
                     photo: "camp-fire.png",
                     sound: "campfire"
                 },
                 {
                     title: "Queda D'Agua",
+                    description: "A agua escorrendo pela pequena cachoeira",
                     photo: "water-fall.png",
                     sound: "waterfall"
                 },
                 {
                     title: "Piano",
+                    description: "Algumas notas de piano suaves",
                     photo: "piano.png",
                     sound: "piano"
                 },

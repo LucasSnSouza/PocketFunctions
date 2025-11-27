@@ -4,7 +4,8 @@
   --color-brand-two: rgb(20, 20, 20);
   --color-brand-three: #3384ff;
   --color-brand-four: rgb(233, 241, 248);
-  --color-brand-five: rgba(250, 250, 250, 0.50);
+  --color-brand-five: rgba(0, 0, 0, 0.1);
+  --color-brand-six: rgb(220, 231, 240);
 
 }
 
@@ -32,6 +33,10 @@
   background-color: var(--color-brand-five);
 }
 
+.bg-color-brand-six {
+  background-color: var(--color-brand-six);
+}
+
 .bg-color-brand-star {
   background-color: var(--color-brand-star);
 }
@@ -54,4 +59,8 @@
 
 .color-brand-five{
   color: var(--color-brand-five);
+}
+
+.color-brand-six{
+  color: var(--color-brand-six);
 }

@@ -9,48 +9,44 @@
 
         <div class="flex gap-md">
             <ButtonBasic
-                class="rounded-md p-lg bg-color-brand-three"
+                class="rounded-md p-md bg-color-brand-four"
                 @click="toggleEnvironmentInterface()"
             >
-                <MiscIcon
-                    class="bg-color-brand-one"
-                    icon="music-fill"
-                    :size="[20,20]"
-                />
+                <div class="bg-color-brand-five rounded p-md">
+                    <MiscIcon
+                        class="bg-color-brand-two"
+                        icon="music-fill"
+                        :size="[20,20]"
+                    />
+                </div>
             </ButtonBasic>
             <ButtonBasic
-                class="rounded-md p-lg bg-color-brand-three"
+                class="rounded-md p-md bg-color-brand-four"
                 @click="toggleFavoriteEnvironmentInterface()"
             >
-                <MiscIcon
-                    class="bg-color-brand-one"
-                    icon="favorite"
-                    :size="[20,20]"
-                />
+                <div class="bg-color-brand-five rounded p-md">
+                    <MiscIcon
+                        class="bg-color-brand-two"
+                        icon="favorite"
+                        :size="[20,20]"
+                    />
+                </div>
             </ButtonBasic>
         </div>
 
-        <MiscDivision/>
-
-        <div class="flex flex-column gap-md">
+        <div class="flex flex-column gap-md scroll-y" style="height: 75%;">
 
             <SoundBasic
                 v-for="(item, index) in getEnvironmentSounds"
                 :title="item.title"
+                :description="item?.description"
+                :photo="item.photo"
                 @change="(event) => { setVolume(index, event.target.value) }"
                 @pause="togglePause(index)"
                 :index="index"
             >
             </SoundBasic>
 
-        </div>
-
-        <div class="flex x-center">
-            <MiscIcon
-                class="bg-color-brand-three"
-                icon="dots-fill"
-                :size="[24,24]"
-            />
         </div>
 
     </div>

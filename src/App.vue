@@ -13,7 +13,7 @@
                 <h1 class="font-lg">{{ $route.meta?.title }}</h1>
             </div>
         </div>
-        <div class="app-information p-xlg">
+        <div class="app-information p-xlg h-full hidden" style="padding-bottom: var(--scale-brand-sm);">
             <RouterView/>
         </div>
         <div
