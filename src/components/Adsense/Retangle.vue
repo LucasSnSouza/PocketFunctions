@@ -1,6 +1,5 @@
 <template>
     <ins 
-        v-if="adsLoaded"
         class="adsbygoogle"
         style="display:block"
         :data-ad-client="adClient"
@@ -15,7 +14,6 @@ export default {
     name: "GoogleAd",
     data(){
         return{
-            adsLoaded: false
         }
     },
     props: {
@@ -29,13 +27,15 @@ export default {
         }
     },
     mounted() {
-        if (window.adsbygoogle && Array.isArray(window.adsbygoogle)) {
-            this.adsLoaded = true;
-            try {
-                (window.adsbygoogle = window.adsbygoogle || []).push({});
-            } catch (e) {
-                console.warn("AdSense error:", e);
-            }
+        const isLocal = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+        if (isLocal) {
+            console.info("AdSense desabilitado no ambiente de desenvolvimento.");
+            return;
+        }
+        try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+            console.warn("AdSense error:", e);
         }
     }
 };
