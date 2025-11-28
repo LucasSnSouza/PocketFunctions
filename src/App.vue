@@ -215,7 +215,7 @@ body{
 }
 
 .app-navigation{
-    padding: 0px var(--scale-brand-xlg) 0px var(--scale-brand-xlg);
+    padding: 0px var(--scale-brand-xlg) var(--scale-brand-lg) var(--scale-brand-xlg);
 }
 
 </style>
