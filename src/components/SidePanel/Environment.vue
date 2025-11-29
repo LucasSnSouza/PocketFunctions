@@ -16,8 +16,8 @@
                     </ButtonBasic>
                 </div>
                 <div class="flex flex-column">
-                    <h1 class="font-md">Sons Ambientes</h1>
-                    <p class="font-sm o-3-4">Uma lista confortavel de sons ambientes para você relaxar a qualquer momento.</p>
+                    <h1 class="font-md">{{ $tr("environment_view.environment_title") }}</h1>
+                    <p class="font-sm o-3-4">{{ $tr("environment_view.sidebar_sounds_list.description") }}</p>
                 </div>
             </div>
 
@@ -126,8 +126,11 @@ export default{
 }
 
 .sidepanel-environment-wrapper{
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    top: 0px;
+    left: 0px;
+    background-color: var(--color-brand-five);
+    backdrop-filter: blur(var(--scale-brand-lg));
+    z-index: 5;
 }
 
 </style>

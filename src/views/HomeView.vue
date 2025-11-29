@@ -3,9 +3,9 @@
     <div class="wrapper-home color-brand-two h-full font-sm flex flex-column gap-lg">
 
         <div class="color-brand-two flex flex-column y-center">
-            <h1 class="font-md text-center">Olá, {{ getDayPeriod() }}</h1>
+            <h1 class="font-md text-center">{{ $tr("home_view.hello") }} {{ getDayPeriod() }}</h1>
             <p class="w-3-4 text-center">
-                Seja bem vindo a o nosso aplicativo de ajuda geral.
+                {{ $tr("home_view.welcome") }}
             </p>
         </div>
 
@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <div class="color-brand-two text-start">
-                    <h1 class="font-md">Tema</h1>
-                    <p class="font-sm">Alterar o Tema</p>
+                    <h1 class="font-md">{{ $tr("home_view.theme") }}</h1>
+                    <p class="font-sm">{{ $tr("home_view.theme_description") }}</p>
                 </div>
             </ButtonBasic>
             <ButtonBasic
                 class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
-                @click="toggleTheme()"
+                @click="toggleLanguage()"
             >
                 <div class="flex">
                     <div class="color-brand-two ghost rounded-md p-md">
@@ -42,8 +42,8 @@
                     </div>
                 </div>
                 <div class="color-brand-two text-start">
-                    <h1 class="font-md">Linguagem</h1>
-                    <p class="font-sm">Alterar o idioma</p>
+                    <h1 class="font-md">{{ $tr("home_view.language") }}</h1>
+                    <p class="font-sm">{{ $tr("home_view.language_description") }}</p>
                 </div>
             </ButtonBasic>
         </div>
@@ -51,11 +51,11 @@
         <div class="flex gap-sm">
             <ButtonBasic
                 class="rounded-lg bg-color-brand-four w-full color-brand-one p-lg flex gap-md"
-                @click="toggleTheme()"
+                @click="$router.push({ path: '/notes' })"
             >
                 <div class="color-brand-two text-start">
-                    <h1 class="font-md">Notas</h1>
-                    <p class="font-sm">Crie notas rapidas</p>
+                    <h1 class="font-md">{{ $tr("home_view.notes") }}</h1>
+                    <p class="font-sm">{{ $tr("home_view.notes_description") }}</p>
                 </div>
             </ButtonBasic>
         </div>
@@ -97,6 +97,9 @@ export default {
         },
         getCurrentTime(){
             return `${String(new Date().getHours()).padStart(2, '0')}:${String(new Date().getMinutes()).padStart(2, '0')}`
+        },
+        toggleLanguage(){
+            useSystemStore().toggleLanguage()
         },
         toggleTheme(){
             useSystemStore().toggleTheme()

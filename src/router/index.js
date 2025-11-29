@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import EnvironmentView from '../views/EnvironmentView.vue'
 import MarketView from '../views/MarketView.vue'
+import NotesView from '../views/NotesView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,19 +11,25 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { title: "Inicio" }
+      meta: { title: "titles.home" }
     },
     {
       path: '/environment',
       name: 'environment',
       component: EnvironmentView,
-      meta: { title: "Ambientes" }
+      meta: { title: "titles.environment" }
     },
     {
       path: '/market',
       name: 'market',
       component: MarketView,
-      meta: { title: "Lista de Compras" }
+      meta: { title: "titles.shopping" }
+    },
+    {
+      path: '/notes',
+      name: 'notes',
+      component: NotesView,
+      meta: { title: "titles.notes" }
     },
   ],
 })

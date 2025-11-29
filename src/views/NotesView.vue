@@ -1,10 +1,10 @@
 <template>
 
-    <div class="wrapper-market color-brand-two h-full font-sm flex flex-column gap-md">
+    <div class="wrapper-notes color-brand-two h-full font-sm flex flex-column gap-md">
 
-        <h1 class="font-md">{{ $tr("market_view.market_title") }}</h1>
+        <h1 class="font-md">Lista de Compras</h1>
         <p class="w-3-4">
-            {{ $tr("market_view.market_description") }}
+            Faça suas listas de compras, compare preços e economize seu dinheiro.
         </p>
 
         <div class="flex gap-lg">
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="color-brand-two text-start">
-                    <h1 class="font-md">{{ $tr("market_view.add_item") }}</h1>
-                    <p class="font-sm">{{ $tr("market_view.add_item_description") }}</p>
+                    <h1 class="font-md">Adicionar Item</h1>
+                    <p class="font-sm">Insira mais um item na lista</p>
                 </div>
             </ButtonBasic>
             <div
@@ -34,8 +34,8 @@
                     @click=""
                 >
                     <div class="color-brand-two text-start flex flex-column y-start x-center">
-                        <h1 class="font-md">{{ $tr("market_view.save_list") }}</h1>
-                        <p class="font-sm">{{ $tr("market_view.save_list_description") }}</p>
+                        <h1 class="font-md">Guardar Lista</h1>
+                        <p class="font-sm">Salve essa lista para comparação</p>
                     </div>
                 </ButtonBasic>
                 <ButtonBasic
@@ -43,8 +43,8 @@
                     @click=""
                 >
                     <div class="color-brand-two text-start flex flex-column y-start x-center">
-                        <h1 class="font-md">{{ $tr("market_view.compare_list") }}</h1>
-                        <p class="font-sm">{{ $tr("market_view.compare_list_description") }}</p>
+                        <h1 class="font-md">Limpar Lista</h1>
+                        <p class="font-sm">Volte a lista do zero</p>
                     </div>
                 </ButtonBasic>
             </div>

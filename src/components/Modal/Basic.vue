@@ -9,7 +9,7 @@
                 <p class="color-brand-three font-md w-full text-center">{{ title }}</p>
             </div>
             <div class="modal-basic-informations p-lg">
-                <slot/>
+                <slot></slot>
             </div>
             <div class="modal-basic-actions p-lg flex gap-md">
     
@@ -69,9 +69,11 @@ export default{
 <style lang="scss">
 
 .modal-basic-wrapper{
+    top: 0px;
+    left: 0px;
     background-color: var(--color-brand-five);
-    backdrop-filter: blur(10px);
-    z-index: 5;
+    backdrop-filter: blur(var(--scale-brand-lg));
+    z-index: 10;
 }
 
 

@@ -24,8 +24,16 @@ export const useSystemStore = defineStore('system', {
         getLogged: (state) => state.logged
     },
     actions: {
-        toggleLanguage(language){
+        setLanguage(language){
             this.language = language;
+        },
+        toggleLanguage() {
+            let langIndex = this.languages.findIndex(lang => lang.value === this.language.value);
+            if (langIndex >= this.languages.length - 1) {
+                this.language = this.languages[0];
+                return;
+            }
+            this.language = this.languages[langIndex + 1];
         },
         toggleTheme(){
             let theme_index = this.themes.findIndex(theme => theme == this.theme)

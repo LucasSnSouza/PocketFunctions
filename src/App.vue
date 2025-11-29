@@ -10,7 +10,7 @@
                     style="height: 40px;" 
                     src="/public/images/lotus_icon.png"
                 />
-                <h1 class="font-lg">{{ $route.meta?.title }}</h1>
+                <h1 class="font-lg">{{ $tr($route.meta?.title || "") }}</h1>
             </div>
         </div>
         <div class="app-information p-xlg h-full hidden" style="padding-bottom: 0px;">
@@ -47,35 +47,6 @@
                 >{{ item?.title }}</p>
             </ButtonBasic>
         </div>
-
-        <SidePanelEnvironment
-            v-if="getEnvironmentShow"
-        />
-
-        <ModalBasic
-            v-if="getFavoriteEnvironmentShow"
-            title="Criar Favorito"
-            cancel-button="Cancelar"
-            confirm-button="Criar"
-            @cancel-action="toggleFavoriteEnvironmentInterface"
-            @confirm-action="setFavorite"
-        >
-            <div class="flex flex-column gap-lg">
-                <div class="flex flex-column gap-sm">
-                    <p class="font-md o-half">Favorite essa lista para que você possa facilmente recarregar a momento.</p>
-                </div>
-                <InputBasic
-                    v-model="favorite_text"
-                    class="rounded-md p-lg"
-                    style="
-                        border: 1px solid var(--color-brand-three);
-                        box-shadow: 2px 2px 8px #00000011;
-                    "
-                    placeholder="Que nome deseja dar a sua lista?"
-                    :value="favorite_text"
-                ></InputBasic>
-            </div>
-        </ModalBasic>
 
     </div>
 
@@ -122,7 +93,6 @@ export default {
                     selected: false
                 },
             ],
-            favorite_text: ""
         }
     },
     components: {
@@ -139,34 +109,11 @@ export default {
             selected: index === selectedIndex
             }))
         },
-        toggleFavoriteEnvironmentInterface(){
-            useEnvironmentStore().toggleFavoriteEnvironmentInterface()
-        },
         toggleTheme(){
             useSystemStore().toggleTheme()
         },
-        setFavorite(){
-            const EnvironmentSoundsSanitized = useEnvironmentStore().getEnvironmentSounds.map(s => {
-                const { howl, ...rest } = s;
-                return rest;
-            });
-            Storage
-            .get("app-favorites")
-            .push("items", {
-                    name: this.favorite_text,
-                    items: EnvironmentSoundsSanitized
-                })
-            .save()
-            this.toggleFavoriteEnvironmentInterface()
-        },
     },
     computed: {
-        getEnvironmentShow(){
-            return useEnvironmentStore().getEnvironmentShow
-        },
-        getFavoriteEnvironmentShow(){
-            return useEnvironmentStore().getFavoriteEnvironmentShow
-        },
         getTheme(){
             return useSystemStore().getTheme
         }

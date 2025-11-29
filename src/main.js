@@ -9,7 +9,7 @@ import router from './router'
 
 const app = createApp(App)
 
-app.config.globalProperties.$translate = translate;
+app.config.globalProperties.$tr = translate;
 app.config.globalProperties.$money = (value) => {
     return value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 };

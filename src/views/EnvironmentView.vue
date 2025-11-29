@@ -2,9 +2,9 @@
 
     <div class="wrapper-environment color-brand-two h-full font-sm flex flex-column gap-md">
 
-        <h1 class="font-md">Sons Ambientes</h1>
+        <h1 class="font-md">{{ $tr("environment_view.environment_title") }}</h1>
         <p class="w-3-4">
-            Faça do seu dispositivo um gerador de sons ambientes confortaveis para todas as horas.
+            {{ $tr("environment_view.environment_description") }}
         </p>
 
         <div class="flex gap-md">
@@ -36,8 +36,6 @@
 
         <div class="flex flex-column gap-md scroll-y" style="height: 75%; padding-bottom: 60px;">
 
-            <!-- <AdsenseRetangle ad-slot="4058977152"/> -->
-
             <SoundBasic
                 v-for="(item, index) in getEnvironmentSounds"
                 :title="item.title"
@@ -51,6 +49,35 @@
 
         </div>
 
+        <SidePanelEnvironment
+            v-if="getEnvironmentShow"
+        />
+
+        <ModalBasic
+            v-if="getFavoriteEnvironmentShow"
+            :title="$tr('environment_view.favorite_environment_modal.title')"
+            :cancel-button="$tr('modals.cancel')"
+            :confirm-button="$tr('modals.create')"
+            @cancel-action="toggleFavoriteEnvironmentInterface()"
+            @confirm-action="setFavorite, toggleFavoriteEnvironmentInterface()"
+        >
+            <div class="flex flex-column gap-lg">
+                <div class="flex flex-column gap-sm">
+                    <p class="font-md o-half">{{ $tr("environment_view.favorite_environment_modal.description") }}</p>
+                </div>
+                <InputBasic
+                    v-model="favorite_text"
+                    class="rounded-md p-lg"
+                    style="
+                        border: 1px solid var(--color-brand-three);
+                        box-shadow: 2px 2px 8px #00000011;
+                    "
+                    :placeholder="$tr('environment_view.favorite_environment_modal.placeholder')"
+                    :value="favorite_text"
+                ></InputBasic>
+            </div>
+        </ModalBasic>
+
     </div>
 
 </template>
@@ -61,18 +88,25 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 
 import * as Misc from "@/components/Misc"
 import * as Button from "@/components/Button"
+import * as Input from "@/components/Input"
+import * as Modal from "@/components/Modal"
 import * as Sound from "@/components/Sound"
+import * as SidePanel from "@/components/SidePanel"
 import * as AdSense from "@/components/Adsense"
 
 export default {
     data(){
         return{
+            favorite_text: ""
         }
     },
     components: {
         ...Misc,
         ...Button,
+        ...Modal,
+        ...Input,
         ...Sound,
+        ...SidePanel,
         ...AdSense
     },
     methods: {
@@ -87,12 +121,32 @@ export default {
         },
         togglePause(index){
             useEnvironmentStore().togglePause(index)
+        },
+        setFavorite(){
+            const EnvironmentSoundsSanitized = useEnvironmentStore().getEnvironmentSounds.map(s => {
+                const { howl, ...rest } = s;
+                return rest;
+            });
+            Storage
+            .get("app-favorites")
+            .push("items", {
+                    name: this.favorite_text,
+                    items: EnvironmentSoundsSanitized
+                })
+            .save()
+            this.toggleFavoriteEnvironmentInterface()
         }
     },
     computed: {
         getEnvironmentSounds(){
             return useEnvironmentStore().getEnvironmentSounds
-        }
+        },
+        getEnvironmentShow(){
+            return useEnvironmentStore().getEnvironmentShow
+        },
+        getFavoriteEnvironmentShow(){
+            return useEnvironmentStore().getFavoriteEnvironmentShow
+        },
     },
     created(){
     }
