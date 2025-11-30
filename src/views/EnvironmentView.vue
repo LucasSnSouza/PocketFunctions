@@ -22,7 +22,7 @@
             </ButtonBasic>
             <ButtonBasic
                 class="rounded-lg p-md bg-color-brand-four"
-                @click="toggleFavoriteEnvironmentInterface()"
+                @click="favorite_modal = !favorite_modal"
             >
                 <div class="bg-color-brand-five rounded p-md">
                     <MiscIcon
@@ -54,12 +54,12 @@
         />
 
         <ModalBasic
-            v-if="getFavoriteEnvironmentShow"
+            v-if="favorite_modal"
             :title="$tr('environment_view.favorite_environment_modal.title')"
             :cancel-button="$tr('modals.cancel')"
             :confirm-button="$tr('modals.create')"
-            @cancel-action="toggleFavoriteEnvironmentInterface()"
-            @confirm-action="setFavorite, toggleFavoriteEnvironmentInterface()"
+            @cancel-action="favorite_modal = false"
+            @confirm-action="setFavorite, favorite_modal = false"
         >
             <div class="flex flex-column gap-lg">
                 <div class="flex flex-column gap-sm">
@@ -97,6 +97,7 @@ import * as AdSense from "@/components/Adsense"
 export default {
     data(){
         return{
+            favorite_modal: false,
             favorite_text: ""
         }
     },
@@ -112,9 +113,6 @@ export default {
     methods: {
         toggleEnvironmentInterface(){
             useEnvironmentStore().toggleEnvironmentInterface()
-        },
-        toggleFavoriteEnvironmentInterface(){
-            useEnvironmentStore().toggleFavoriteEnvironmentInterface()
         },
         setVolume(index, volume){
             useEnvironmentStore().setVolume(index, volume)
@@ -143,9 +141,6 @@ export default {
         },
         getEnvironmentShow(){
             return useEnvironmentStore().getEnvironmentShow
-        },
-        getFavoriteEnvironmentShow(){
-            return useEnvironmentStore().getFavoriteEnvironmentShow
         },
     },
     created(){

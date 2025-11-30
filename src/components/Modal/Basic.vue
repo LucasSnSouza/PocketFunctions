@@ -1,7 +1,7 @@
 <template>
 
     <div class="modal-basic-wrapper absolute w-full h-full y-center p-xlg flex">
-        <div class="modal-basic-panel bg-color-brand-one rounded-md hidden">
+        <div class="modal-basic-panel bg-color-brand-one w-full rounded-md hidden">
             <div 
                 v-if="title"
                 class="bg-color-brand-four p-xlg"
@@ -45,6 +45,7 @@ export default{
 
         }
     },
+    emits: ["cancel-action", "confirm-action"],
     components: {
         ...Button
     },

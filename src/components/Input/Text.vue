@@ -9,7 +9,9 @@
             :placeholder="placeholder"
             @input="(data) => { $emit('update:modelValue', data.target.value); }"
         ></textarea>
-        <slot/>
+        <slot>
+            
+        </slot>
     </div>
 </template>
 
