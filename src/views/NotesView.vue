@@ -9,7 +9,7 @@
                     Escreva notas e guarde recordações, ou lembretes para o futuro.
                 </p>
             </div>
-            <div class="flex gap-lg">
+            <div class="flex gap-md">
                 <ButtonBasic
                     class="rounded-lg bg-color-brand-four w-half aspect-ratio color-brand-one p-lg flex flex-column gap-sm justify-between"
                     @click="note_modal = true"

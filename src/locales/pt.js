@@ -50,7 +50,8 @@ export default {
             cancel: "Cancelar",
             confirm: "Confirmar",
             create: "Criar",
-            return: "Voltar"
+            return: "Voltar",
+            include: "Adicionar"
         }
     }
 }
