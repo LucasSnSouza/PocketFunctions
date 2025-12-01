@@ -80,7 +80,7 @@
                     <InputBasic
                         v-model="note_form['title']"
                         class="rounded-md p-lg w-full"
-                        input-class="color-brand-one"
+                        input-class="color-brand-two"
                         style="
                             border: 1px solid var(--color-brand-three);
                             box-shadow: 2px 2px 8px #00000011;
@@ -90,13 +90,13 @@
                     ></InputBasic>
                     <InputColor
                         class-preview="rounded-md color-brand-three ghost"
-                        input-class="color-brand-one"
                         style-preview="padding: 22px;"
                         @color-action="(color) => { note_form['background'] = color } "
                     />
                 </div>
                 <InputText
                     v-model="note_form['text']"
+                    input-class="color-brand-two"
                     placeholder="Digite sua nota aqui ..."
                     :value="note_form['text']"
                 />

@@ -53,6 +53,8 @@
 
 import { useEnvironmentStore } from '@/stores/environment.js'
 
+import Admob from '@/services/admob.js'
+
 import { Storage } from "@/utils/storage.js"
 
 import * as Button from '@/components/Button'
@@ -101,14 +103,23 @@ export default{
         ...Misc
     },
     computed: {
+        getEnviromentSounds(){
+            return useEnvironmentStore().getEnvironmentSounds
+        }
     },
     methods:{
-        addEnvironmentSound(sound_data){
+        async addEnvironmentSound(sound_data){
             useEnvironmentStore().addEnvironment(sound_data);
+            if(this.getEnviromentSounds.length > 2){
+                await Admob.showRewarded()
+            }
         },
         toggleEnvironmentInterface(){
             useEnvironmentStore().toggleEnvironmentInterface()
         }
+    },
+    async mounted(){
+        await Admob.initialize()
     },
     created(){
         this.favorite_sounds_list = Storage.get("app-favorites").data.items

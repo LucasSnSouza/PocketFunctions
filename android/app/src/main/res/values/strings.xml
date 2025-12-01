@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">calm-life</string>
+    <string name="title_activity_main">calm-life</string>
+    <string name="package_name">com.outpostinnovations.calmlife</string>
+    <string name="custom_url_scheme">com.outpostinnovations.calmlife</string>
+</resources>
