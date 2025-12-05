@@ -190,7 +190,7 @@ body{
 }
 
 .app-navigation{
-    padding: 0px var(--scale-brand-xlg) var(--scale-brand-lg) var(--scale-brand-xlg);
+    padding: var(--scale-brand-md) var(--scale-brand-xlg) var(--scale-brand-xlg) var(--scale-brand-xlg);
 }
 
 </style>

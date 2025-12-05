@@ -6,21 +6,15 @@
             <div class="p-lg bg-color-brand-four rounded">
                 <MiscIcon
                     class="bg-color-brand-two"
-                    icon="lamp-filled-icon"
+                    icon="like"
                     :size="[20,20]"
                 />
             </div>
-            <h1 class="font-md">Escolha um tema</h1>
+            <h1 class="font-md">Escolha seus interesses</h1>
         </div>
 
         <div class="">
-            <p class="font-md o-half">Escolha um dos temas disponiveis para seu melhor conforto em nosso app</p>
-        </div>
-
-        <div class="flex gap-md">
-
-            <img src="../../../arts/illustration_theme_dark.png"/>
-
+            <p class="font-md o-half">Escolha quais funções o aplicativo deve ter visiveis para você, essas escolhas podem ser modificadas futuramente.</p>
         </div>
 
     </div>

@@ -5,7 +5,16 @@
         style="padding-bottom: var(--scale-brand-xlg);"
     >
 
+        <ViewLanguage
+            v-if="page == 0"
+        />
+
         <ViewTheme
+            v-if="page == 1"
+        />
+
+        <ViewInterest
+            v-if="page == 2"
         />
 
         <div class="flex w-full p-lg" style="padding-bottom: 0px;">
@@ -19,6 +28,7 @@
                         background: page === index ? 'var(--color-brand-four)': ''
                     }"
                     :index="index"
+                    @click="page = index"
                 >
                 </div>
             </div>

@@ -3,10 +3,10 @@ import { defineStore } from "pinia";
 export const useSystemStore = defineStore('system', {
     state: () => ({
         theme: '',
-        language: {label: "english", value: "en"},
+        language: {label: "English", value: "en"},
         languages: [
-            { label: "portuguese", value: "pt" },
-            { label: "english", value: "en" },
+            { label: "Portugues", value: "pt" },
+            { label: "English", value: "en" },
         ],
         themes: [
             "",
