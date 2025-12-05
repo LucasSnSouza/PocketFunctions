@@ -49,7 +49,7 @@
 
         </div>
 
-        <SidePanelEnvironment
+        <SidebarEnvironment
             v-if="getEnvironmentShow"
         />
 
@@ -91,7 +91,7 @@ import * as Button from "@/components/Button"
 import * as Input from "@/components/Input"
 import * as Modal from "@/components/Modal"
 import * as Sound from "@/components/Sound"
-import * as SidePanel from "@/components/SidePanel"
+import * as Sidebar from "@/components/Sidebar"
 
 export default {
     data(){
@@ -106,7 +106,7 @@ export default {
         ...Modal,
         ...Input,
         ...Sound,
-        ...SidePanel,
+        ...Sidebar,
     },
     methods: {
         toggleEnvironmentInterface(){

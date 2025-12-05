@@ -45,8 +45,8 @@
                         @click=""
                     >
                         <div class="color-brand-two text-start flex flex-column y-start x-center">
-                            <h1 class="font-md">Limpar Lista</h1>
-                            <p class="font-sm">Volte a lista do zero</p>
+                            <h1 class="font-md">Modo edição</h1>
+                            <p class="font-sm">Edite suas notas</p>
                         </div>
                     </ButtonBasic>
                 </div>
@@ -170,6 +170,7 @@ export default {
     data(){
         return{
             expand_screen: true,
+            edit_mode: true,
             note_preview_modal: false,
             note_preview_form: {},
             note_modal: false,

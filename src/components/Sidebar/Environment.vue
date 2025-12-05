@@ -1,5 +1,5 @@
 <template>
-    <div class="sidepanel-environment-wrapper absolute w-full h-full flex x-end">
+    <div class="sidebar-environment-wrapper absolute w-full h-full flex x-end">
         <div class="sidepanel-environment-frame flex flex-column gap-lg w-3-4 bg-color-brand-one p-xlg">
 
             <div class="flex gap-md">

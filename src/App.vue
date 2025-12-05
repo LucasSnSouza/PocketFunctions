@@ -4,7 +4,10 @@
         class="app bg-color-brand-one color-brand-two w-full h-full flex flex-column relative hidden"
         :class="getTheme"
     >
-        <div class="app-title p-xlg">
+        <div 
+            v-if="$route.meta?.header"
+            class="app-title p-xlg"
+        >
             <div class="flex y-end gap-md">
                 <img
                     style="height: 40px;" 
@@ -17,35 +20,88 @@
             <RouterView/>
         </div>
         <div
-            class="app-navigation absolute w-full flex x-center y-center gap-lg"
+            v-if="$route.meta?.navigation"
+            class="app-navigation absolute w-full flex flex-column gap-lg"
             style="bottom: 0px; left: 0px; backdrop-filter: blur(var(--scale-brand-lg));"
         >
-            <ButtonBasic
-                v-for="(item, index) in list_navigation_buttons"
-                class="flex bg-none x-center y-center flex-column p-lg rounded-md"
-                :class="{'o-half': !item.selected}, {'bg-color-brand-three': item.selected}"
-                :index="index"
-                @click="setNavigationSelected(index), $router.push({ path: item.route })"
+            <div 
+                v-if="helper"
+                class="flex gap-lg"
             >
-                <div>
+                <InputBasic
+                    class="bg-color-brand-four color-brand-two w-full ghost p-lg rounded flex"
+                    style="padding-left: 24px;padding-right: 24px;"
+                    placeholder="Me diga oque vocês está procurando ..."
+                >
                     <MiscIcon
-                        v-if="item.selected"
-                        :icon="item?.active_icon"
+                        icon="star"
                         class="bg-color-brand-two"
-                        :size="[24,24]"
+                        :size="[20,20]"
                     />
-                    <MiscIcon
-                        v-else
-                        :icon="item?.inactive_icon"
-                        class="bg-color-brand-two"
-                        :size="[24,24]"
-                    />
-                </div>
-                <p 
-                    v-if="!item.selected"
-                    class="text-center color-brand-two"
-                >{{ item?.title }}</p>
-            </ButtonBasic>
+                </InputBasic>
+            </div>
+            <div class="w-full flex x-center y-center gap-lg">
+                <ButtonBasic
+                    class="flex bg-none x-center y-center flex-column p-lg rounded-md"
+                    @click="$router.push({ path: '/home' })"
+                >
+                    <div>
+                        <MiscIcon
+                            icon="home"
+                            class="bg-color-brand-two"
+                            :size="[20,20]"
+                        />
+                    </div>
+                </ButtonBasic>
+                <ButtonBasic
+                    class="flex bg-none x-center y-center flex-column p-lg rounded-md"
+                    @click="$router.push({ path: '/home' })"
+                >
+                    <div>
+                        <MiscIcon
+                            icon="applications"
+                            class="bg-color-brand-two"
+                            :size="[20,20]"
+                        />
+                    </div>
+                </ButtonBasic>
+                <ButtonBasic
+                    class="flex bg-color-grandit-brand-one x-center y-center flex-column p-lg rounded"
+                    @click="helper = !helper"
+                >
+                    <div>
+                        <MiscIcon
+                            icon="star"
+                            class="bg-color-brand-one"
+                            :size="[20,20]"
+                        />
+                    </div>
+                </ButtonBasic>
+                <ButtonBasic
+                    class="flex bg-none x-center y-center flex-column p-lg rounded-md"
+                    @click="$router.push({ path: '/home' })"
+                >
+                    <div>
+                        <MiscIcon
+                            icon="crown"
+                            class="bg-color-brand-two"
+                            :size="[20,20]"
+                        />
+                    </div>
+                </ButtonBasic>
+                <ButtonBasic
+                    class="flex bg-none x-center y-center flex-column p-lg rounded-md"
+                    @click="$router.push({ path: '/home' })"
+                >
+                    <div>
+                        <MiscIcon
+                            icon="person"
+                            class="bg-color-brand-two"
+                            :size="[20,20]"
+                        />
+                    </div>
+                </ButtonBasic>
+            </div>
         </div>
 
     </div>
@@ -62,7 +118,7 @@ import { useEnvironmentStore } from '@/stores/environment.js'
 import { Storage } from "@/utils/storage.js"
 
 import * as Misc from "@/components/Misc"
-import * as SidePanel from "@/components/SidePanel"
+import * as SidePanel from "@/components/Sidebar"
 import * as Button from "@/components/Button"
 import * as Modal from "@/components/Modal"
 import * as Input from "@/components/Input"
@@ -70,29 +126,7 @@ import * as Input from "@/components/Input"
 export default {
     data(){
         return{
-            list_navigation_buttons: [
-                {
-                    title: "Home",
-                    route: "/",
-                    inactive_icon: "home",
-                    active_icon: "home-fill",
-                    selected: true
-                },
-                {
-                    title: "Ambientes",
-                    route: "/environment",
-                    inactive_icon: "music",
-                    active_icon: "music-fill",
-                    selected: false
-                },
-                {
-                    title: "Mercado",
-                    route: "/market",
-                    inactive_icon: "cart",
-                    active_icon: "cart-fill",
-                    selected: false
-                },
-            ],
+            helper: false,
         }
     },
     components: {
@@ -103,12 +137,6 @@ export default {
         ...Input
     },
     methods: {
-        setNavigationSelected(selectedIndex){
-            this.list_navigation_buttons = this.list_navigation_buttons.map((button, index) => ({
-            ...button,
-            selected: index === selectedIndex
-            }))
-        },
         toggleTheme(){
             useSystemStore().toggleTheme()
         },

@@ -7,6 +7,8 @@
   --color-brand-five: rgba(0, 0, 0, 0.1);
   --color-brand-six: rgb(220, 231, 240);
 
+  --color-gradient-brand-one: linear-gradient(320deg,rgba(51, 132, 255, 1) 0%, rgba(144, 223, 105, 1) 100%);
+
 }
 
 .bg-none {
@@ -37,8 +39,8 @@
   background-color: var(--color-brand-six);
 }
 
-.bg-color-brand-star {
-  background-color: var(--color-brand-star);
+.bg-color-grandit-brand-one{
+  background: var(--color-gradient-brand-one);
 }
 
 .color-brand-one{
