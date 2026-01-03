@@ -140,6 +140,18 @@
             :cancel-button="$tr('modals.return')"
             @cancel-action="note_preview_modal = false"
         >
+            <template #extras>
+                <ButtonBasic
+                    class="bg-color-brand-three p-md rounded-md pointer h-full aspect-ratio"
+                    @click="note_preview_modal = false, removeNote(note_preview_form)"
+                >
+                    <MiscIcon
+                        icon="bin"
+                        class="bg-color-brand-one"
+                        :size="[20,20]"
+                    /> 
+                </ButtonBasic>
+            </template>
             <div class="flex flex-column gap-md p-lg">
                 <div class="flex gap-md">
                     <h1 class="font-md">{{ note_preview_form?.title }}</h1>
@@ -208,6 +220,10 @@ export default {
         addNote(){
             Storage.get('app-notes').push("items", this.note_form).save()
             this.notes_list.push({...this.note_form})
+        },
+        removeNote(note){
+            this.notes_list = this.notes_list.filter(item => item.title != note.title)
+            Storage.get('app-notes').delete('items').save()
         }
     },
     computed: {

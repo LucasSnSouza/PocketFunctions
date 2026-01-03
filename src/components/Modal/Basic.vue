@@ -29,6 +29,8 @@
                     <p>{{ confirmButton }}</p>
                 </ButtonBasic>
                 
+                <slot name="extras"></slot>
+                
             </div>
         </div>
     </div>
